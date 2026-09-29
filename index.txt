@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ортофотоплан</title>
+    <!-- Подключаем стили Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <!-- Подключаем скрипт Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Создаем карту и центрируем её
+        var map = L.map('map').setView([0, 0], 16);
+
+        // Добавляем тайлы (путь '{z}/{x}/{y}.png' берет папки 16, 17, 18 и т.д. из корня сайта)
+        L.tileLayer('{z}/{x}/{y}.png', {
+            minZoom: 15,
+            maxZoom: 20,
+            tms: false,
+            attribution: 'Ортофотоплан'
+        }).addTo(map);
+    </script>
+</body>
+</html>
